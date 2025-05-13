@@ -1,3 +1,4 @@
+//updated
 const mongoose = require('mongoose');
 
 const supportTicketSchema = new mongoose.Schema({
