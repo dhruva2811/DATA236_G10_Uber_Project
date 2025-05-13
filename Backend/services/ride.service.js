@@ -4,7 +4,7 @@ const crypto = require('crypto');
 const axios = require('axios');
 const billingModel = require('../models/billing.model');
 
-// ✅ Dynamic fare using ML model + surge + fallback
+// Dynamic fare using ML model + surge + fallback
 async function getDynamicFare(distanceInMiles, passenger_count, hour) {
   try {
     const response = await axios.post('http://localhost:5001/predict', {
@@ -39,12 +39,12 @@ async function getDynamicFare(distanceInMiles, passenger_count, hour) {
   }
 }
 
-// ✅ Generate OTP
+// Generate OTP
 function getOtp(num) {
   return crypto.randomInt(Math.pow(10, num - 1), Math.pow(10, num)).toString();
 }
 
-// ✅ Create a new ride
+// Create a new ride
 module.exports.createRide = async ({ user, pickup, destination, vehicleType, passenger_count }) => {
   console.log("📥 createRide called with:", { user, pickup, destination, vehicleType, passenger_count });
 
@@ -87,7 +87,7 @@ module.exports.createRide = async ({ user, pickup, destination, vehicleType, pas
   return await rideModel.findById(newRide._id).select('+otp');
 };
 
-// ✅ Confirm ride
+// Confirm ride
 module.exports.confirmRide = async ({ rideId, captain }) => {
   if (!rideId) throw new Error('Ride id is required');
 
@@ -103,11 +103,11 @@ module.exports.confirmRide = async ({ rideId, captain }) => {
 
   if (!ride) throw new Error('Ride not found');
 
-  console.log("✅ Ride confirmed:", ride._id, "by captain:", captain._id);
+  console.log("Ride confirmed:", ride._id, "by captain:", captain._id);
   return ride;
 };
 
-// ✅ Start ride after verifying OTP
+// Start ride after verifying OTP
 module.exports.startRide = async ({ rideId, otp, captain }) => {
   if (!rideId || !otp) throw new Error('Ride id and OTP are required');
 
@@ -122,14 +122,14 @@ module.exports.startRide = async ({ rideId, otp, captain }) => {
 
   await rideModel.findOneAndUpdate({ _id: rideId }, { status: 'ongoing' });
 
-  console.log("✅ Ride started:", ride._id, "with OTP:", otp);
+  console.log("Ride started:", ride._id, "with OTP:", otp);
   return ride;
 };
 
 module.exports.endRide = async ({ rideId, captain }) => {
   if (!rideId) throw new Error('Ride id is required');
 
-  console.log("⛔️ End ride attempt:", rideId, "by captain:", captain._id);
+  console.log(" End ride attempt:", rideId, "by captain:", captain._id);
 
   const ride = await rideModel.findOne({ _id: rideId })
     .populate('user')
