@@ -1,4 +1,4 @@
-const rideMediaModel = require('../models/RideMedia.model');
+const rideMediaModel = require('../models/RideMedia.model'); //calling the model
 
 exports.uploadMedia = async (req, res) => {
   const { rideId, imageUrl } = req.body;
