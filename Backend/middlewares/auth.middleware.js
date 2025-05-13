@@ -5,7 +5,6 @@ const blackListTokenModel = require('../models/blackListToken.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-// ✅ User Authentication
 module.exports.authUser = async (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
   if (!token) return res.status(401).json({ message: 'Unauthorized' });
@@ -23,7 +22,6 @@ module.exports.authUser = async (req, res, next) => {
   }
 };
 
-// ✅ Captain Authentication
 module.exports.authCaptain = async (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
   if (!token) return res.status(401).json({ message: 'Unauthorized' });
@@ -41,7 +39,6 @@ module.exports.authCaptain = async (req, res, next) => {
   }
 };
 
-// ✅ Admin Authentication
 module.exports.authAdmin = async (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
   if (!token) return res.status(401).json({ message: 'Unauthorized' });
