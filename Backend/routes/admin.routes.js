@@ -18,7 +18,6 @@ router.post('/login', [
   body('password').exists()
 ], adminController.loginAdmin);
 
-// ✅ New Analytics Route
 router.get('/analytics/overview', authUser, adminController.getAnalyticsOverview);
 router.get('/analytics/revenue-today', authAdmin, adminController.getTodayRevenue);
 module.exports = router;
