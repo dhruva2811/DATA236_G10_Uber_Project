@@ -1,7 +1,6 @@
 const adminModel = require('../models/admin.model');
 const billingModel = require('../models/billing.model');
 
-// ✅ Register Admin
 module.exports.registerAdmin = async (req, res) => {
   const { adminId, firstname, lastname, email, phone, address, city, state, zipCode, password } = req.body;
 
@@ -20,7 +19,6 @@ module.exports.registerAdmin = async (req, res) => {
   }
 };
 
-// ✅ Login Admin
 module.exports.loginAdmin = async (req, res) => {
   const { email, password } = req.body;
 
@@ -37,7 +35,6 @@ module.exports.loginAdmin = async (req, res) => {
   }
 };
 
-// ✅ Analytics Overview
 module.exports.getAnalyticsOverview = async (req, res) => {
   try {
     const revenueAgg = await billingModel.aggregate([
