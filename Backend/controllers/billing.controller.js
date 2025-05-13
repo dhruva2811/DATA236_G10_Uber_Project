@@ -1,7 +1,6 @@
 const billingModel = require('../models/billing.model');
 const rideModel = require('../models/ride.model');
 
-// ✅ Get all billing records (admin view)
 module.exports.getAllBillings = async (req, res) => {
     try {
         const billings = await billingModel.find().populate('rideId customerId driverId');
@@ -11,7 +10,6 @@ module.exports.getAllBillings = async (req, res) => {
     }
 };
 
-// ✅ Get billing by ride ID
 module.exports.getBillingByRide = async (req, res) => {
     try {
         const billing = await billingModel.findOne({ rideId: req.params.rideId })
@@ -23,7 +21,6 @@ module.exports.getBillingByRide = async (req, res) => {
     }
 };
 
-// ✅ Get billing records for a specific user
 module.exports.getBillingByUser = async (req, res) => {
     try {
         const billings = await billingModel.find({ customerId: req.params.userId })
