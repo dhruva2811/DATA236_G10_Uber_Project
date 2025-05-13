@@ -1,3 +1,4 @@
+//billing.model.js
 const mongoose = require('mongoose');
 
 const billingSchema = new mongoose.Schema({
