@@ -5,7 +5,6 @@ import os
 
 app = Flask(__name__)
 
-# Robust path handling
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "models", "fare_predictor.pkl")
 model = joblib.load(MODEL_PATH)
 
