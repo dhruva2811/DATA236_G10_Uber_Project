@@ -1,4 +1,4 @@
-// ✅ support.controller.js
+// ✅ Call support.controller.js
 const supportModel = require('../models/support.model');
 
 // POST /support
