@@ -1,4 +1,3 @@
-// ✅ Updated support.model.js to include issue category
 const mongoose = require('mongoose');
 
 const supportTicketSchema = new mongoose.Schema({
