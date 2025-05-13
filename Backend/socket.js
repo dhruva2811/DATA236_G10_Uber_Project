@@ -49,7 +49,6 @@ function initializeSocket(server) {
 }
 
 const sendMessageToSocketId = (socketId, messageObject) => {
-
 console.log(messageObject);
 
     if (io) {
